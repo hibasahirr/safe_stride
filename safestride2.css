@@ -1,0 +1,166 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    color: #333;
+}
+
+header {
+    background-color: #00796b;
+    color: white;
+    padding: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: sticky;
+    top: 0; /* This makes the header stick to the top */
+    z-index: 1000; /* Ensures it is on top of other content */
+    width: 100%;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Adds a slight shadow for effect */
+}
+
+header .logo h1 {
+    font-size: 2rem;
+}
+
+nav ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    justify-content: space-around;
+    width: 100%;
+}
+
+nav ul li {
+    display: inline;
+}
+
+nav ul li a {
+    color: white;
+    text-decoration: none;
+    font-size: 1.1rem;
+    padding: 10px 15px;
+    display: block;
+}
+
+nav ul li a:hover {
+    background-color: #004d40;
+    text-decoration: underline;
+}
+
+.hero {
+    background-color: #e0f2f1;
+    text-align: center;
+    padding: 50px 20px;
+}
+
+.hero h2 {
+    font-size: 2.5rem;
+    color: #004d40;
+}
+
+.hero p {
+    font-size: 1.2rem;
+    margin-top: 10px;
+}
+
+.cta-button {
+    background-color: #00796b;
+    color: white;
+    padding: 15px 30px;
+    text-decoration: none;
+    font-size: 1.2rem;
+    margin-top: 20px;
+    display: inline-block;
+    border-radius: 5px;
+}
+
+.cta-button:hover {
+    background-color: #004d40;
+}
+
+.features {
+    padding: 40px 20px;
+    background-color: #ffffff;
+}
+
+.features h2 {
+    text-align: center;
+    font-size: 2rem;
+    color: #00796b;
+}
+
+.feature {
+    margin: 20px 0;
+    background-color: #e0f2f1;
+    padding: 20px;
+    border-radius: 10px;
+    text-align: center;
+}
+
+.feature h3 {
+    font-size: 1.6rem;
+    color: #004d40;
+}
+
+.feature p {
+    font-size: 1rem;
+    color: #555;
+}
+
+.cta-section {
+    background-color: #004d40;
+    color: white;
+    text-align: center;
+    padding: 40px 20px;
+}
+
+.cta-section h2 {
+    font-size: 2rem;
+}
+
+footer {
+    background-color: #333;
+    color: white;
+    text-align: center;
+    padding: 20px;
+    position: absolute;
+    width: 100%;
+    bottom: 0;
+}
+
+.about {
+    background-color: #ffffff; /* White background */
+    padding: 50px 20px; /* Padding for spacing */
+    text-align: center; /* Center align text */
+    font-family: Arial, sans-serif;
+    color: #333;
+    border-radius: 10px; /* Rounded corners for the section */
+    margin: 40px 0; /* Add margin for spacing around the section */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Light shadow effect */
+}
+
+/* Title Styling */
+.about h1 {
+    font-size: 2.5rem; /* Larger font size for the title */
+    color: #00796b; /* Match the theme color */
+    margin-bottom: 20px; /* Add space below the title */
+    font-weight: bold;
+}
+
+/* Paragraph Styling */
+.about p {
+    font-size: 1.1rem; /* Slightly larger font for readability */
+    line-height: 1.6; /* Increased line height for better readability */
+    margin: 15px 0; /* Add spacing between paragraphs */
+    max-width: 800px; /* Limit the width for better alignment */
+    margin-left: auto;
+    margin-right: auto;
+    color: #555; /* Dark gray text color for better contrast */
+}

@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Geolocation and Chatbot</title>
+    <style>
+        /* General styling */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background-color: #f4f7fc;
+        }
+
+        h1 {
+            color: #4b6bcb;
+        }
+
+        button {
+            padding: 10px 20px;
+            background-color: #4b6bcb;
+            color: white;
+            border: none;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+
+        button:hover {
+            background-color: #3a55a3;
+        }
+
+        /* Geolocation section */
+        #location {
+            margin-top: 20px;
+            padding: 10px;
+            background-color: #e9ecef;
+            border-radius: 5px;
+        }
+
+        /* Chatbot section */
+        #chatbox {
+            border: 1px solid #ccc;
+            width: 100%;
+            max-width: 400px;
+            height: 300px;
+            padding: 10px;
+            margin-top: 20px;
+            overflow-y: auto;
+            background-color: #ffffff;
+            border-radius: 5px;
+        }
+
+        #chatInput {
+            width: 100%;
+            max-width: 350px;
+            padding: 10px;
+            margin-top: 10px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+            font-size: 14px;
+        }
+
+        .chat-message {
+            margin: 10px 0;
+            padding: 8px;
+            border-radius: 5px;
+            background-color: #f1f1f1;
+            max-width: 80%;
+        }
+
+        .user-message {
+            background-color: #d1e7dd;
+            margin-left: auto;
+        }
+
+        .bot-message {
+            background-color: #f8d7da;
+            margin-right: auto;
+        }
+    </style>
+</head>
+<body>
+    <h1>Your Current Location & Chatbot</h1>
+    
+    <!-- Location section -->
+    <button onclick="getLocation()">Get Location</button>
+    <p id="location"></p>
+
+    <hr>
+
+    <!-- Chatbot section -->
+    <h2>Chat with Bot</h2>
+    <div id="chatbox">
+        <div class="chat-message bot-message">Bot: Hi! How can I assist you today?</div>
+    </div>
+    <input type="text" id="chatInput" placeholder="Type a message..." />
+    <button onclick="sendMessage()">Send</button>
+
+    <script>
+        // Geolocation part
+        function getLocation() {
+            if (navigator.geolocation) {
+                navigator.geolocation.getCurrentPosition(showPosition, showError);
+            } else {
+                document.getElementById("location").innerHTML = "Geolocation is not supported by this browser.";
+            }
+        }
+
+        function showPosition(position) {
+            const latitude = position.coords.latitude;
+            const longitude = position.coords.longitude;
+            document.getElementById("location").innerHTML = "Latitude: " + latitude + "<br>Longitude: " + longitude;
+        }
+
+        function showError(error) {
+            switch(error.code) {
+                case error.PERMISSION_DENIED:
+                    document.getElementById("location").innerHTML = "User denied the request for Geolocation.";
+                    break;
+                case error.POSITION_UNAVAILABLE:
+                    document.getElementById("location").innerHTML = "Location information is unavailable.";
+                    break;
+                case error.TIMEOUT:
+                    document.getElementById("location").innerHTML = "The request to get user location timed out.";
+                    break;
+                case error.UNKNOWN_ERROR:
+                    document.getElementById("location").innerHTML = "An unknown error occurred.";
+                    break;
+            }
+        }
+
+        // Chatbot part
+        function sendMessage() {
+            const userInput = document.getElementById("chatInput").value;
+            if (userInput) {
+                const chatbox = document.getElementById("chatbox");
+
+                // Display user message
+                chatbox.innerHTML += `<div class="chat-message user-message">You: ${userInput}</div>`;
+
+                // Bot response
+                let botResponse = getBotResponse(userInput);
+                chatbox.innerHTML += `<div class="chat-message bot-message">Bot: ${botResponse}</div>`;
+
+                // Scroll to the bottom of the chatbox
+                chatbox.scrollTop = chatbox.scrollHeight;
+
+                // Clear the input field
+                document.getElementById("chatInput").value = '';
+            }
+        }
+
+        function getBotResponse(input) {
+            // Simple bot logic based on user input
+            input = input.toLowerCase();
+
+            if (input.includes("hello") || input.includes("hi")) {
+                return "Hello! How can I assist you today?";
+            } else if (input.includes("location")) {
+                return "I can show you your current location. Just click 'Get Location' above!";
+            } else if (input.includes("how are you")) {
+                return "I'm just a bot, but I'm doing well! How about you?";
+            } else {
+                return "Sorry, I don't understand that. Can you try asking something else?";
+            }
+        }
+    </script>
+</body>
+</html>
